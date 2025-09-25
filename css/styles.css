@@ -1,0 +1,494 @@
+/*  Base theme variables (light mode)  */
+:root {
+  --bg: #f5f8fc;            /* page background */
+  --surface: #ffffff;       /* card / panel background */
+  --text: #1f2937;          /* main text  */
+  --muted: #64748b;         /* secondary text */
+  --border: #e5e7eb;        /* subtle borders */
+  --brand-weak: #e6f1ff;    /* very light blue band */
+  --brand: #365890;         //* main blue */
+  --shadow: 0 10px 25px rgba(15, 23, 42, .08);  /* soft card shadow */
+}
+
+
+/*  Dark theme variables  */
+body.dark {
+  --bg: #0f172a;            /* dark background */
+  --surface: #111827;       /* dark panels */
+  --text: #e5e7eb;          /* light text */
+  --muted: #94a3b8;         /* light muted text */
+  --border: #1f2937;        /* dark border */
+  --brand-weak: #0b2447;    /* deep blue band */
+  --brand: #9a8adc;         /* light purple for dark bg */
+  --shadow: 0 10px 25px rgba(0, 0, 0, .35); /* stronger shadow */
+}
+
+/* Global resets */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth; /* smooth anchor jumps */
+}
+
+
+/* base text + background */
+body {
+  margin: 0; /* remove default margin */
+  font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color: var(--text); /* use theme text color */
+  background: linear-gradient(180deg, var(--bg), color-mix(in srgb, var(--bg) 85%, #000 15%)); /* Subtle vertical gradient */
+}
+
+/* Layout helpers */
+.container { /* center content and limit width */
+  width: min(1100px, 92%);
+  margin-inline: auto; /* center horizontally */
+}
+
+/* Standard section spacing */
+.section {
+  padding: clamp(48px, 8vw, 96px) 0;
+}
+
+/* Section with colored background */
+.section.alt {
+  background: var(--brand-weak);           /* Background color */
+  border-top: 1px solid var(--border);     /* Top border line */
+  border-bottom: 1px solid var(--border);  /* Bottom border line */
+}
+
+/* Section header spacing */
+.section-head {
+  margin-bottom: 24px;  /* Space below section header */
+}
+
+/* Section title responsive sizing */
+.section-head h2 {
+  margin: 0 0 8px;
+  font-size: clamp(1.5rem, 1.2rem + 1.2vw, 2rem);
+}
+
+/* Section description text */
+.section-desc {
+  margin: 0;
+  color: var(--muted);
+}
+
+/*        1        */
+/*  Header Styles  */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(255,255,255,.7); /* Semi-transparent white */
+  backdrop-filter: saturate(180%) blur(10px);  /* Frosted glass effect */
+  border-bottom: 1px solid var(--border);      /* Bottom border */
+}
+
+/* Dark mode header adjustments */
+body.dark .site-header {
+  background: rgba(17, 24, 39, .6);  /* Semi-transparent dark background */
+}
+
+/* Navigation layout */
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;  /* Space between logo and links */
+  padding: 10px 0;  /* Vertical padding */
+  flex-wrap: wrap;  /* header row can wrap on small screens */
+}
+
+/* Brand logo and name container */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;  /* Space between logo and text */
+  text-decoration: none;
+  color: var(--text);
+  font-weight: 700;
+}
+
+/* Logo sizing */
+.brand-logo {
+  width: 36px;
+  height: 36px;
+}
+
+/* Navigation links container */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 18px; /* Space between links */
+  flex-wrap: wrap; /* links wrap to next line if needed */
+  gap: 12px;
+}
+
+/* Navigation link styles */
+.nav-links a {
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+/* Hover effect for links */
+.nav-links a:hover {
+    color: var(--brand); /* Change to brand color on hover */
+}
+
+/* Theme toggle button */
+.theme-toggle {
+  border: 1px solid var(--border);
+  background: var(--surface);
+  padding: 8px 10px;
+  border-radius: 999px; /* Pill shape */
+  cursor: pointer;
+  box-shadow: var(--shadow);
+}
+
+
+
+/*      2      */
+/*    Intro    */
+
+.intro {
+  padding: 64px 0 24px;
+    background:
+    radial-gradient(1200px 400px at 20% -10%, rgba(59,130,246,.12), transparent 60%),
+    radial-gradient(1000px 400px at 120% -30%, rgba(148,163,184,.12), transparent 60%);
+}
+
+/* Intro content grid layout */
+.intro-grid,
+.two-col {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* stacks under ~640px */
+    gap: 28px;   /* keep the gap */
+    align-items: center;    /* vertical alignment */
+}
+
+.grid.projects {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* responsive columns */
+    gap: 20px;   /* keep the gap */
+}
+
+
+/* Small headline above main title */
+.eyebrow {
+  color: var(--brand);
+  font-weight: 600;
+  letter-spacing: .02em;
+  margin: 0 0 8px;
+}
+
+/* Main intro title */
+.headline {
+  margin: 0 0 12px;
+  font-size: clamp(1.8rem, 1.3rem + 2vw, 3rem);
+  line-height: 1.1;
+}
+
+/* Intro subtitle */
+.tagline {
+  margin: 0 0 18px;
+  color: var(--muted);
+}
+
+/* Buttons container */
+.intro-ctas {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+/* Intro image styling */
+.intro-media img {
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 20px 30px rgba(59,130,246,.18));  /* Soft blue shadow */
+  border-radius: 16px;
+}
+
+
+
+/*       3       */
+/* Button Styles */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 16px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 600;
+  box-shadow: var(--shadow);
+}
+
+/* Smaller button variant */
+.btn.small {
+    padding: 8px 12px;
+    font-size: .95rem;
+}
+
+/* Primary action button */
+.btn.primary {
+    background: var(--brand);
+    color: white;
+    border-color: transparent;
+}
+
+/* Ghost button with transparent background */
+.btn.ghost {
+    background: transparent;
+}
+
+/* Disabled button state */
+.btn[aria-disabled="true"] {
+    opacity: .6;
+    pointer-events: none;
+}
+
+/* Chip/tag container */
+.chips {
+  display: flex;
+    gap: 10px;
+    padding: 0;
+    margin: 16px 0 0;
+    list-style: none;
+}
+
+/* Individual chip style */
+.chips li {
+  border: 1px solid var(--border);
+  background: var(--surface);
+  padding: 6px 10px;
+  border-radius: 999px;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+
+
+/*        4       */
+/* Layout Helpers */
+
+/* Two-column layout */
+.two-col {
+  display: grid;
+  grid-template-columns: .9fr 1.1fr; /* Unequal columns */
+  gap: 24px;
+  align-items: center;
+}
+
+/* Circular profile image */
+.profile {
+  width: 220px;
+  max-width: 100%;
+  border-radius: 50%;
+  display: block;
+  margin-inline: auto; /* Center horizontally */
+  box-shadow: var(--shadow);
+  background: var(--surface);
+}
+
+/* Projects grid layout */
+.grid.projects {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr)); /* 2 equal columns */
+  gap: 20px;
+
+}
+
+/* allows content to wrap instead of overflowing */
+.grid.projects > .card {
+    min-width: 0;
+}
+
+/* Card component for content blocks */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  display: grid;
+  grid-template-rows: auto 1fr;
+}
+
+/* Card image */
+.card-media {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Card content area */
+.card-body {
+    padding: 16px;
+    min-width: 0;
+}
+
+/* Card title */
+.card-title {
+    margin: 0 0 6px;
+}
+
+/* Card description text */
+.card-text {
+    margin: 0 0 12px;
+    color: var(--muted);
+}
+
+.card-title,
+.card-text {
+    white-space: normal;         /* enable normal wrapping */
+    overflow-wrap: anywhere;
+    word-break: normal;
+    hyphens: auto;
+    line-height: 1.35;
+}
+
+/* Card action buttons */
+.card-actions {
+    display: flex;
+    gap: 10px;
+}
+
+/* Skills grid - auto-fit columns */
+.grid.skills {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;/* center the whole group */
+  grid-template-columns: repeat(auto-fit, minmax(160px, max-content));
+  gap: 12px;
+}
+
+/* Skill pill style */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 10px 14px;
+  text-align: center;
+  font-weight: 600;
+  color: var(--muted);
+  box-shadow: var(--shadow);
+}
+
+
+
+/*       5       */
+/*  Form Styles  */
+
+/* Form container */
+.form {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: var(--shadow);
+}
+
+/* Form row spacing */
+.form-row {
+  display: grid;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+/* Form labels */
+label {
+    font-weight: 600;
+}
+
+/* Form inputs */
+input, textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: #fff;
+  color: var(--text);
+  outline: none; /* Remove default focus outline */
+}
+
+/* Dark mode form inputs */
+body.dark input,
+body.dark textarea {
+    background: #0b1220;
+    border-color: #243248;
+}
+
+/* Input focus state */
+input:focus,
+textarea:focus {
+  border-color: var(--brand);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--brand) 25%, transparent);
+}
+
+/* Form meta info (character count, etc) */
+.meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Error message styling */
+.error {
+    color: #b91c1c;
+}
+
+/* Form status messages */
+.status {
+    margin-top: 10px;
+    color: var(--muted);
+}
+
+
+
+/*     6    */
+/*  Footer  */
+.site-footer {
+  border-top: 1px solid var(--border);
+  padding: 28px 0 48px;
+  background: linear-gradient(180deg, transparent, var(--brand-weak));
+  text-align: center;
+  color: var(--muted);
+}
+
+/* 1) Let cards and their content SHRINK inside grid tracks */
+.grid.projects > .card { min-width: 0; }   /* allow the card to shrink */
+.card-body { min-width: 0; max-width: 100%; }   /* allow inner content to shrink */
+
+/* 2) Force text to wrap instead of pushing width */
+.card-body h3,
+.card-body p {
+    white-space: normal;           /* allow normal wrapping */
+    overflow-wrap: anywhere;       /* break long words/URLs if needed */
+    word-break: normal;            /* keep natural breaks */
+    line-height: 1.35;             /* nicer multi-line spacing */
+}
+
+/* 3) Don't clip text: keep rounded image without hiding card overflow */
+.card { overflow: visible; }     /* was hidden; that was cutting text */
+.card img {                      /* keep image nicely rounded without using overflow on the card */
+    display: block;
+    width: 100%;
+    height: auto;
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+}
+
