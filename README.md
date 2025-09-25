@@ -1,4 +1,4 @@
-# SWE363 - Assignment 1 - Personal Portfolio
+#Assignment 1 - Personal Portfolio
 
 A simple, responsive personal portfolio built with **HTML**, **CSS**, and **JavaScript**. The site highlights an intro, projects, skills, 
 and a contact form, with a built‑in **light/dark theme toggle**
