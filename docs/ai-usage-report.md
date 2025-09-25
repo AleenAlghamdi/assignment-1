@@ -42,4 +42,3 @@ AI served as a pair‑design assistant; all code and text were reviewed and edit
 - **Manual visual testing** on desktop and small viewport (Chrome)
 - **Functional check** for theme toggle persistence (refresh and revisit behavior)
 - **Content review** for README and this report to ensure clarity and accuracy
-
